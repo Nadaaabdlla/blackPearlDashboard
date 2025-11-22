@@ -15,20 +15,16 @@ const productImg = document.querySelector('input[type="file"]');
 const fileInput = document.getElementById('fileInput');
 const previewImg = document.getElementById('previewImg');
 // ================== PREVIEW ==================
-// previewBtn.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     let products = JSON.parse(localStorage.getItem("products")) || [];
-//     const productData = {
-//         name: productName.value,
-//         price: productPrice.value,
-//         newPrice: productNewPrice.value,
-//         description: productDescription.value,
-//         type: productType.value,
-//         onSale: saleSelectedYes.checked
-//         };
-//     products.push(productData);
-//     localStorage.setItem("products", JSON.stringify(products));
-// });
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.classList.add("show");
+    
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000); // 3 seconds
+}
+
 const productData = {
     name: productName.value,
     price: productPrice.value,
@@ -39,6 +35,7 @@ const productData = {
 };
 previewBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    showToast("Product saved, you can view it now!");
     const file = fileInput.files[0];
     if (file) {
         const reader = new FileReader();
