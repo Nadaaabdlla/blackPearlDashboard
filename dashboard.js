@@ -1,6 +1,9 @@
 // ================== SELECTORS ==================
+const form = document.querySelector("#dashboardForm");
+const yesSaleCon = document.querySelector("#yesSale");
 const productName = document.querySelector("#productName");
 const productPrice = document.querySelector("#productPrice");
+const productNewPrice = document.querySelector("#productNewPrice");
 const productDescription = document.querySelector("#productDescription");
 const productType = document.querySelector("#productType");
 const productTypeOPTG = document.querySelector("#productTypeOPTG");
@@ -25,12 +28,20 @@ const productImg = document.querySelector('input[type="file"]');
 //         previewImg.style.display = 'none';
 //     }
 // });
+// ================== ONSALE(YES)==================
+saleSelectedYes.addEventListener("click", () => {
+        yesSaleCon.classList.remove("hidden");
+    });
+// ================== NOT ONSALE(NO)==================
+saleSelectedNo.addEventListener("click", () => {
+        yesSaleCon.classList.add("hidden");
+    });
 // ================== SUBMIT ==================
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (saleSelectedYes) {
         // Format the message
-        let message = ` 
+        let message1 = ` 
         <div class="card ${productType.value} lazy-div">
           <div class="offerBanner">Sale</div>
               <img data-src="IMG PATH" class=" card-img-top lazy-img" alt="...">
@@ -41,16 +52,218 @@ submitBtn.addEventListener("click", (e) => {
               </div>
            </div>
        </div>\n`;
-       let imageUrl= document.querySelector("#imgLink").value;
+        let message2 = `\n
+       <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/icon_logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="prodact1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <title>Black Pearl</title>
+</head>
+
+<body>
+    <header>
+        <nav id="nav1" class="navbar" style="padding: 0;width: 71px;">
+            <div class="container-fluid" style="padding: 0;">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <img src="assets/logoText.png" alt="logo" style="width: 150px; height: 40px;">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" data-bs-dismiss="offcanvas"
+                                    href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#categoryContainer"
+                                    data-bs-dismiss="offcanvas">categories</a>
+                                <a class="nav-link" href="index.html#footer" data-bs-dismiss="offcanvas">AboutUs</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Contact us
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="https://www.facebook.com/profile.php?id=61573152634854"
+                                            data-bs-dismiss="offcanvas">
+                                            <img src="assets/facebook.png" alt="">
+                                            Facebook
+                                        </a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="https://www.instagram.com/blackpearl_store04/"
+                                            data-bs-dismiss="offcanvas">
+                                            <img src="assets/instagram.png" alt="">
+                                            Instagram
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="https://wa.me/+2001022379431"
+                                            data-bs-dismiss="offcanvas">
+                                            <img src="assets/whatsapp.png" alt="">
+                                            WhatsApp
+                                        </a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="https://chat.whatsapp.com/DlyfycFpjj0BAe9UJ2607s"
+                                            data-bs-dismiss="offcanvas">
+                                            <img src="assets/whatsapp.png" alt="">
+                                            Our WhatsApp group
+                                        </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2 search_bar" type="search" placeholder="Search"
+                                aria-label="Search" />
+                            <button class="btn search" type="submit" data-bs-dismiss="offcanvas">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <img src="assets/icon_logo.png" alt="">
+        <nav id="nav2">
+            <li id="cartBtn">
+                <a href="cartItems.html"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+                <span id="cart-count">0</span>
+            </li>
+            <a href="heartItems.html">
+                <li class="mainHeartBtn">
+                    <i class="fa-regular fa-heart fa-xl" style="color: rgb(0, 0, 0);"></i>
+                </li>
+            </a>
+        </nav>
+    </header>
+    <main>
+        <section id="prodactDetailes">
+            <div class="slider-window">
+                <div class="slider-track">
+                    <div class="hero-slide" style="background-image: url('assets/ac2.jpg')">
+                        <div class="hero-content"></div>
+                    </div>
+
+                    <div class="hero-slide" style="background-image: url('assets/ac1.jpg')">
+                        <div class="hero-content"></div>
+                    </div>
+
+                    <div class="hero-slide" style="background-image: url('assets/ac3.jpg')">
+                        <div class="hero-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- arrows -->
+            <button class="hero-arrow prev" aria-label="Prev">‹</button>
+            <button class="hero-arrow next" aria-label="Next">›</button>
+
+            <!-- dots -->
+            <div class="indicators"></div>
+            <div id="detailes">
+                <h4 class="card-text">${productName.value}</h4>
+                <p style="text-align: center;">${productDescription.value}</p>
+                <div id="price">
+                    <span class="card-text oldPrice">Price:${productPrice.value} EGP</span>
+                    <p class="card-text newPrice">Price:${productNewPrice.value} EGP</p>
+                </div>
+                <div class="p-4">
+                    <div class="container text-center">
+                        <div class="quantity-wrapper justify-content-center">
+                            <button class="btn btn-outline-secondary btn-qty" id="decreaseBtn">-</button>
+                            <input type="number" id="qtyInput"
+                                style="background-color: #faf0e6; border-color: rgb(172, 172, 172);"
+                                class="form-control qty-input" value="1" min="1" max="99">
+                            <button class="btn btn-outline-secondary btn-qty" id="increaseBtn">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btns">
+                    <button id="sendWhatsapp">
+                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                        <span class="text">Add to cart</span>
+                    </button>
+                    <button id="addToWishlist">
+                        <i class="fa-solid fa-heart fa-xl"></i>
+                        <span class="text">Add to wishlist</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <img src="assets/logoText.png" alt="logo">
+        <p style="text-align: center;">This website offers different high quality handmade accessories to match your
+            vibe</p>
+        <div id="Footernavbar">
+            <!-- <nav>
+                <ul>
+                    <li><a href="#heroSection">Home</a></li>
+                     <li><a href="#footer">About</a></li> 
+                    <li><a href="#categoryContainer">categories</a></li>
+                </ul>
+            </nav> -->
+            <nav style="justify-content: center;">
+                <ul>
+                    <li>
+                        <img src="assets/facebook.png" alt="">
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=61573152634854">
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <img src="assets/instagram.png" alt="">
+                        <a href="https://www.instagram.com/blackpearl_store04/">
+                            Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <img src="assets/whatsapp.png" alt="">
+                        <a href="https://wa.me/+2001022379431">
+                            WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <p>&copy;All copyrights reseved to Black Pearl</p>
+        <p> Made by Nada Tarek</p>
+    </footer>
+    <script src="prodact1.js"></script>
+</body>
+
+</html>
+
+       `;
+        let imageUrl = document.querySelector("#imgLink").value;
         // WhatsApp number
         let phoneNumber = "2001557354982";
         // WhatsApp link
-        let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message+ " " + imageUrl)}`;
+        let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message1 + " " + imageUrl + " " + message2)}`;
         // Open WhatsApp
         window.open(url, "_blank");
     } else {
         // Format the message
-        let message = ` 
+        let message1 = ` 
         <div class="card ${productType.value} lazy-div">
               <img data-src="IMG PATH" class=" card-img-top lazy-img" alt="...">
             <div class="card-body">
@@ -60,11 +273,211 @@ submitBtn.addEventListener("click", (e) => {
               </div>
            </div>
         </div>\n`;
-        let imageUrl= document.querySelector("#imgLink").value;
+        let message2 = `\n
+        <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/x-icon" href="assets/icon_logo.png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <link rel="stylesheet" href="prodact1.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+         </script>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+     <title>Black Pearl</title>
+ </head>
+ 
+ <body>
+     <header>
+         <nav id="nav1" class="navbar" style="padding: 0;width: 71px;">
+             <div class="container-fluid" style="padding: 0;">
+                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                     aria-labelledby="offcanvasNavbarLabel">
+                     <div class="offcanvas-header">
+                         <img src="assets/logoText.png" alt="logo" style="width: 150px; height: 40px;">
+                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                     </div>
+                     <div class="offcanvas-body">
+                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                             <li class="nav-item">
+                                 <a class="nav-link active" aria-current="page" data-bs-dismiss="offcanvas"
+                                     href="index.html">Home</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="index.html#categoryContainer"
+                                     data-bs-dismiss="offcanvas">categories</a>
+                                 <a class="nav-link" href="index.html#footer" data-bs-dismiss="offcanvas">AboutUs</a>
+                             </li>
+                             <li class="nav-item dropdown">
+                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                     aria-expanded="false">
+                                     Contact us
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li>
+                                         <a class="dropdown-item" target="_blank"
+                                             href="https://www.facebook.com/profile.php?id=61573152634854"
+                                             data-bs-dismiss="offcanvas">
+                                             <img src="assets/facebook.png" alt="">
+                                             Facebook
+                                         </a>
+                                     </li>
+                                     <li><a class="dropdown-item" href="https://www.instagram.com/blackpearl_store04/"
+                                             data-bs-dismiss="offcanvas">
+                                             <img src="assets/instagram.png" alt="">
+                                             Instagram
+                                         </a></li>
+                                     <li><a class="dropdown-item" href="https://wa.me/+2001022379431"
+                                             data-bs-dismiss="offcanvas">
+                                             <img src="assets/whatsapp.png" alt="">
+                                             WhatsApp
+                                         </a></li>
+                                     <li>
+                                         <hr class="dropdown-divider">
+                                     </li>
+                                     <li><a class="dropdown-item" href="https://chat.whatsapp.com/DlyfycFpjj0BAe9UJ2607s"
+                                             data-bs-dismiss="offcanvas">
+                                             <img src="assets/whatsapp.png" alt="">
+                                             Our WhatsApp group
+                                         </a></li>
+                                 </ul>
+                             </li>
+                         </ul>
+                         <form class="d-flex mt-3" role="search">
+                             <input class="form-control me-2 search_bar" type="search" placeholder="Search"
+                                 aria-label="Search" />
+                             <button class="btn search" type="submit" data-bs-dismiss="offcanvas">Search</button>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </nav>
+         <img src="assets/icon_logo.png" alt="">
+         <nav id="nav2">
+             <li id="cartBtn">
+                 <a href="cartItems.html"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+                 <span id="cart-count">0</span>
+             </li>
+             <a href="heartItems.html">
+                 <li class="mainHeartBtn">
+                     <i class="fa-regular fa-heart fa-xl" style="color: rgb(0, 0, 0);"></i>
+                 </li>
+             </a>
+         </nav>
+     </header>
+     <main>
+         <section id="prodactDetailes">
+             <div class="slider-window">
+                 <div class="slider-track">
+                     <div class="hero-slide" style="background-image: url('assets/ac2.jpg')">
+                         <div class="hero-content"></div>
+                     </div>
+ 
+                     <div class="hero-slide" style="background-image: url('assets/ac1.jpg')">
+                         <div class="hero-content"></div>
+                     </div>
+ 
+                     <div class="hero-slide" style="background-image: url('assets/ac3.jpg')">
+                         <div class="hero-content"></div>
+                     </div>
+                 </div>
+             </div>
+ 
+             <!-- arrows -->
+             <button class="hero-arrow prev" aria-label="Prev">‹</button>
+             <button class="hero-arrow next" aria-label="Next">›</button>
+ 
+             <!-- dots -->
+             <div class="indicators"></div>
+             <div id="detailes">
+                 <h4 class="card-text">${productName.value}</h4>
+                 <p style="text-align: center;">${productDescription.value}</p>
+                 <div id="price">
+                     <p class="card-text newPrice">Price:${productPrice.value} EGP</p>
+                 </div>
+                 <div class="p-4">
+                     <div class="container text-center">
+                         <div class="quantity-wrapper justify-content-center">
+                             <button class="btn btn-outline-secondary btn-qty" id="decreaseBtn">-</button>
+                             <input type="number" id="qtyInput"
+                                 style="background-color: #faf0e6; border-color: rgb(172, 172, 172);"
+                                 class="form-control qty-input" value="1" min="1" max="99">
+                             <button class="btn btn-outline-secondary btn-qty" id="increaseBtn">+</button>
+                         </div>
+                     </div>
+                 </div>
+ 
+                 <div class="btns">
+                     <button id="sendWhatsapp">
+                         <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                         <span class="text">Add to cart</span>
+                     </button>
+                     <button id="addToWishlist">
+                         <i class="fa-solid fa-heart fa-xl"></i>
+                         <span class="text">Add to wishlist</span>
+                     </button>
+                 </div>
+ 
+             </div>
+         </section>
+     </main>
+     <footer id="footer">
+         <img src="assets/logoText.png" alt="logo">
+         <p style="text-align: center;">This website offers different high quality handmade accessories to match your
+             vibe</p>
+         <div id="Footernavbar">
+             <!-- <nav>
+                 <ul>
+                     <li><a href="#heroSection">Home</a></li>
+                      <li><a href="#footer">About</a></li> 
+                     <li><a href="#categoryContainer">categories</a></li>
+                 </ul>
+             </nav> -->
+             <nav style="justify-content: center;">
+                 <ul>
+                     <li>
+                         <img src="assets/facebook.png" alt="">
+                         <a target="_blank" href="https://www.facebook.com/profile.php?id=61573152634854">
+                             Facebook
+                         </a>
+                     </li>
+                     <li>
+                         <img src="assets/instagram.png" alt="">
+                         <a href="https://www.instagram.com/blackpearl_store04/">
+                             Instagram
+                         </a>
+                     </li>
+                     <li>
+                         <img src="assets/whatsapp.png" alt="">
+                         <a href="https://wa.me/+2001022379431">
+                             WhatsApp
+                         </a>
+                     </li>
+                 </ul>
+             </nav>
+         </div>
+         <p>&copy;All copyrights reseved to Black Pearl</p>
+         <p> Made by Nada Tarek</p>
+     </footer>
+     <script src="prodact1.js"></script>
+ </body>
+ 
+ </html>
+        `;
+        let imageUrl = document.querySelector("#imgLink").value;
         // WhatsApp number
         let phoneNumber = "2001557354982";
         // WhatsApp link
-        let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message+ " " + imageUrl)}`;
+        let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message1 + " " + imageUrl + " " + message2)}`;
         // Open WhatsApp
         window.open(url, "_blank");
     }

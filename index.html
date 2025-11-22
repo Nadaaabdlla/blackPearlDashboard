@@ -13,7 +13,8 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
         </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <script async src="//imgg.io/sdk/pup.js" data-url="https://imgg.io/upload" data-palette="purple" data-auto-insert="direct-links" data-sibling="#imgLink" data-sibling-pos="after"></script>
+    <script async src="//imgg.io/sdk/pup.js" data-url="https://imgg.io/upload" data-palette="purple"
+        data-auto-insert="direct-links" data-sibling="#imgLink" data-sibling-pos="after"></script>
     <title>Dashboard</title>
 </head>
 
@@ -121,20 +122,22 @@
                 <span class="radio-btn"></span>
                 yes
             </label>
-
             <label class="custom-radio">
                 <input type="radio" name="saleStatus" value="no">
                 <span class="radio-btn"></span>
                 no
             </label>
+            <div id="yesSale" class="hidden">
+                <input type="number" name="productNewPrice" id="productNewPrice" placeholder="Product new price">
+            </div>
             <textarea type="text" id="imgLink" placeholder="Link will be add here, Don't write anything"></textarea>
             <!-- <label class="custom-file">
                 Choose product's photo
                 <input type="file" id="fileInput" accept="image/*">
-            </label> -->
+            </label> 
             <div class="preview">
                 <img id="previewImg" src="" alt="">
-            </div>
+            </div>-->
             <div id="submitCon">
                 <input type="submit" id="submit">
             </div>

@@ -227,6 +227,10 @@ main #dashboardForm {
   border-radius: 15px;
 }
 
+main #dashboardForm .hidden {
+  display: none;
+}
+
 main #dashboardForm .chevereto-pup-button {
   border-radius: 15px;
   padding: 10px;
