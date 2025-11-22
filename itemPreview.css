@@ -224,48 +224,102 @@ header nav a {
 }
 
 main {
+  padding-top: 10px;
   background-color: #faf0e6;
+  padding-bottom: 20px;
+  height: auto;
+  min-height: 60vh;
 }
 
-main h1 {
-  text-align: center;
-  padding: 20px 0 0;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+main #productsContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 15px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-main #dashboardForm {
-  margin: 20px;
-  padding: 20px 5px;
-  min-height: -webkit-max-content;
-  min-height: -moz-max-content;
-  min-height: max-content;
-  border: 1px solid #360636;
-  border-radius: 15px;
-}
-
-main #dashboardForm .hidden {
+main #productsContainer .card.hidden {
   display: none;
 }
 
-main #dashboardForm .chevereto-pup-button {
-  border-radius: 15px;
-  padding: 10px;
-  background-color: #d8d8d8;
-  color: black;
-  margin: 5px 75px;
-  width: 60%;
+main #productsContainer .lazy-div {
+  opacity: 0;
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
+  -webkit-transition: opacity 0.8s ease, -webkit-transform 0.8s ease;
+  transition: opacity 0.8s ease, -webkit-transform 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease, -webkit-transform 0.8s ease;
 }
 
-main #dashboardForm .custom-file {
-  display: inline-block;
-  padding: 10px;
-  background-color: #360e50;
+main #productsContainer .lazy-div.visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+main #productsContainer .card {
+  background-color: #faf0e6;
+  width: 10rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 0px solid #c7c7c7;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main #productsContainer .card .card-img-top {
+  border-radius: 9px;
+  height: 14rem;
+  width: 10rem;
+}
+
+main #productsContainer .card .lazy-img {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+}
+
+main #productsContainer .card .lazy-img.loaded {
+  opacity: 1;
+  -webkit-filter: blur(0);
+          filter: blur(0);
+}
+
+main #productsContainer .card .offerBanner {
+  z-index: 1000;
   color: white;
-  cursor: pointer;
-  border-radius: 6px;
-  font-weight: bold;
-  margin: 10px auto;
-  width: 95%;
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: 700;
+  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.644);
+          box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.644);
+  background-color: #640964;
+  background-size: cover;
+  height: 40px;
+  padding: 10px 0;
+  width: 60px;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 90px;
+  left: 10px;
+}
+
+main #productsContainer .card .card-body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -273,125 +327,61 @@ main #dashboardForm .custom-file {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 10px;
+  gap: 15px;
+  padding: 5px;
 }
 
-main #dashboardForm .custom-file input {
-  display: none;
-}
-
-main #dashboardForm .preview {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+main #productsContainer .card .card-body .card-bodytext {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-main #dashboardForm .preview img {
-  max-width: 200px;
-  max-height: 200px;
-  border: 2px solid #6a1b9a;
-  border-radius: 6px;
-  display: none;
+main #productsContainer .card .card-body .card-bodytext h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
 }
 
-main #dashboardForm #btnCon {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  gap: 1%;
+main #productsContainer .card .card-body .card-bodytext p {
+  text-align: center;
+  color: #be3232;
 }
 
-main #dashboardForm #btnCon #submit {
-  background-color: #360e50;
-  color: white;
+main #productsContainer .card .card-body .card-bodytext span {
+  text-decoration: line-through;
+  color: gray;
+  text-align: center;
+  display: block;
 }
 
-main #dashboardForm #btnCon #previewBtn {
-  background-color: #ffffff;
-}
-
-main #dashboardForm #btnCon #submit, main #dashboardForm #btnCon #previewBtn {
-  margin: 20px 0 0;
-  width: 45%;
-  margin: 20px auto;
-}
-
-main #dashboardForm #btnCon #submit:active {
-  background-color: #771672;
-}
-
-main #dashboardForm #btnCon #previewBtn:active {
-  background-color: #167716;
-  color: #ffffff;
-}
-
-main #dashboardForm input[type="file"] {
+main #productsContainer .card .card-body .cartBtn {
   display: inline-block;
 }
 
-main #dashboardForm textarea {
-  min-height: 100px;
+main #productsContainer .card .cardBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
-main #dashboardForm select,
-main #dashboardForm textarea,
-main #dashboardForm input:not([type="file"]) {
-  margin: 5px;
-  border-radius: 10px;
-  border: 1px solid #2c032c;
-  padding: 5px;
-  text-align: center;
-  width: 95%;
-}
-
-main #dashboardForm .custom-radio {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  cursor: pointer;
-  margin: 10px 15px 0;
-  font-size: 18px;
-}
-
-main #dashboardForm .custom-radio input {
-  display: none;
-}
-
-main #dashboardForm .radio-btn {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #3a123a;
-  border-radius: 50%;
-  margin-right: 8px;
-  position: relative;
-}
-
-main #dashboardForm .custom-radio input:checked + .radio-btn::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: #4d2c4d;
-  border-radius: 50%;
+main #productsContainer .card .cardBtns .heartBtn {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  top: 20px;
+  right: 15px;
 }
-/*# sourceMappingURL=dashboard.css.map */
+/*# sourceMappingURL=itemPreview.css.map */

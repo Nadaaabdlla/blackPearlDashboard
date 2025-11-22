@@ -8,43 +8,90 @@ const productDescription = document.querySelector("#productDescription");
 const productType = document.querySelector("#productType");
 const productTypeOPTG = document.querySelector("#productTypeOPTG");
 const submitBtn = document.querySelector("#submit");
+const previewBtn = document.querySelector("#previewBtn");
 const saleSelectedYes = document.querySelector('input[value="yes"]');
 const saleSelectedNo = document.querySelector('input[value="no"]');
 const productImg = document.querySelector('input[type="file"]');
-// const fileInput = document.getElementById('fileInput');
-// const previewImg = document.getElementById('previewImg');
-// ================== IMG UPLOADING ==================
-// fileInput.addEventListener('change', () => {
-//     const file = fileInput.files[0];
-//     if (file) {
-//         const reader = new FileReader();
-//         reader.onload = function (e) {
-//             previewImg.src = e.target.result;
-//             previewImg.style.display = 'block';
+const fileInput = document.getElementById('fileInput');
+const previewImg = document.getElementById('previewImg');
+// ================== PREVIEW ==================
+// previewBtn.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     let products = JSON.parse(localStorage.getItem("products")) || [];
+//     const productData = {
+//         name: productName.value,
+//         price: productPrice.value,
+//         newPrice: productNewPrice.value,
+//         description: productDescription.value,
+//         type: productType.value,
+//         onSale: saleSelectedYes.checked
 //         };
-//         reader.readAsDataURL(file);
-//     } else {
-//         previewImg.src = '';
-//         previewImg.style.display = 'none';
-//     }
+//     products.push(productData);
+//     localStorage.setItem("products", JSON.stringify(products));
 // });
+const productData = {
+    name: productName.value,
+    price: productPrice.value,
+    newPrice: productNewPrice.value,
+    description: productDescription.value,
+    type: productType.value,
+    onSale: saleSelectedYes.checked
+};
+previewBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            productData.image = e.target.result;
+            saveProduct(productData);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        productData.image = null;
+        saveProduct(productData);
+    }
+});
+function saveProduct(productData) {
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products.push(productData);
+    localStorage.setItem("products", JSON.stringify(products));
+}
+
+// ================== IMG UPLOADING ==================
+fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            previewImg.src = e.target.result;
+            previewImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    } else {
+        previewImg.src = '';
+        previewImg.style.display = 'none';
+    }
+});
 // ================== ONSALE(YES)==================
 saleSelectedYes.addEventListener("click", () => {
-        yesSaleCon.classList.remove("hidden");
-    });
+    yesSaleCon.classList.remove("hidden");
+});
 // ================== NOT ONSALE(NO)==================
 saleSelectedNo.addEventListener("click", () => {
-        yesSaleCon.classList.add("hidden");
-    });
+    yesSaleCon.classList.add("hidden");
+});
 // ================== SUBMIT ==================
 submitBtn.addEventListener("click", (e) => {
+    const product = JSON.parse(localStorage.getItem("products")) || [];
+    console.log();
     e.preventDefault();
     if (saleSelectedYes) {
         // Format the message
         let message1 = ` 
         <div class="card ${productType.value} lazy-div">
           <div class="offerBanner">Sale</div>
-              <img data-src="IMG PATH" class=" card-img-top lazy-img" alt="...">
+              <img data-src="IMG_PATH" class=" card-img-top lazy-img" alt="...">
                <div class="card-body">
               <div class="card-bodytext">
                   <h4 class="card-text">${productName.value}</h4>

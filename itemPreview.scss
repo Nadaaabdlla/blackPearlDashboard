@@ -1,0 +1,133 @@
+@import "variables";
+@import "reset";
+@import "headerAndFooter";
+@import "scrollAndMedia";
+header{
+  nav{
+    display: flex;
+    align-items: center;
+    a{
+      text-decoration: none;
+      color: #360e50;
+      font-weight: 700;
+      font-size: large;
+    }
+  }
+}
+main{
+  padding-top: 10px;
+  background-color: $main-background-color;
+  padding-bottom: 20px;
+  height: auto;
+  min-height: 60vh;
+  #productsContainer {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      .card.hidden {
+        display: none;
+      }
+      .lazy-div {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      
+      .lazy-div.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .card {
+        background-color: $main-background-color;
+        width: 10rem;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        border: 0px solid $shadow-color;
+        flex-direction: column;
+        align-items: center;
+
+        .card-img-top {
+          // border-radius: 9px 9px 0 0;
+          border-radius: 9px;
+          height: 14rem;
+          width: 10rem;    
+        }
+        .lazy-img {
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+          filter: blur(10px);
+        }
+        .lazy-img.loaded {
+          opacity: 1;
+          filter: blur(0);
+        }
+        .offerBanner {
+          // display: none;
+          z-index: 1000;
+          // color: rgb(80, 78, 78);
+          color: white;
+          font-size: 0.8rem;
+          text-align: center;
+          font-weight: 700;
+          box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.644);
+          // background: url("assets/gold.jpg");
+          background-color: rgb(100, 9, 100);
+          background-size: cover;
+          height: 40px;
+          // transform: rotate(-45deg);
+          padding: 10px 0;
+          width: 60px;
+          border-radius: 50px;
+          position: absolute;
+          bottom: 90px;
+          left: 10px;
+        }
+        .card-body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          padding: 5px;
+          .card-bodytext {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h4 {
+              font-size: 0.9rem;
+              font-weight: 700;
+              text-align: center;
+            }
+            p {
+              text-align: center;
+              color: rgb(190, 50, 50);
+            }
+            span{
+              text-decoration: line-through;
+             color: gray;
+             text-align: center;
+             display: block;
+
+            }
+          }
+          .cartBtn {
+            display: inline-block;
+          }
+        }
+
+        .cardBtns {
+          display: flex;
+          gap: 10px;
+          height: fit-content;
+          .heartBtn {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+          }
+        }
+      }
+    }
+}

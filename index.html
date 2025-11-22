@@ -20,86 +20,12 @@
 
 <body>
     <header>
-        <nav id="nav1" class="navbar" style="padding: 0; width: 71px">
-            <div class="container-fluid" style="padding: 0">
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                            Black Pearl
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html#categoryContainer">categories</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Contact us
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" target="_blank"
-                                            href="https://www.facebook.com/profile.php?id=61573152634854">
-                                            <i class="fa-brands fa-square-facebook"
-                                                style="padding: 0 5px 0 0"></i>Facebook
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="https://www.instagram.com/blackpearl_store04/">
-                                            <i class="fa-brands fa-square-instagram"
-                                                style="padding: 0 5px 0 0"></i>Instagram
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="https://wa.me/+2001022379431">
-                                            <i class="fa-brands fa-square-whatsapp" style="padding: 0 5px 0 0"></i>
-                                            WhatsApp
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="https://chat.whatsapp.com/DlyfycFpjj0BAe9UJ2607s">
-                                            <i class="fa-brands fa-square-whatsapp" style="padding: 0 5px 0 0"></i>
-                                            Our WhatsApp group
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <form class="d-flex mt-3" role="search">
-                            <input class="form-control me-2 search_bar" type="search" placeholder="Search"
-                                aria-label="Search" />
-                            <button class="btn search" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </nav>
+       <nav id="nav1">
+        <a href="index.html">Dashboard</a>
+       </nav>
         <img src="assets/icon_logo.png" alt="" />
         <nav id="nav2">
-            <li id="cartBtn">
-                <a href="cartItems.html"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
-                <span id="cart-count">0</span>
-            </li>
-            <a href="heartItems.html">
-                <li class="mainHeartBtn">
-                    <i class="fa-regular fa-heart fa-xl" style="color: black"></i>
-                </li>
-            </a>
+            <a href="itemPreview.html">Item preview</a>
         </nav>
     </header>
     <main>
@@ -131,15 +57,16 @@
                 <input type="number" name="productNewPrice" id="productNewPrice" placeholder="Product new price">
             </div>
             <textarea type="text" id="imgLink" placeholder="Link will be add here, Don't write anything"></textarea>
-            <!-- <label class="custom-file">
+            <label class="custom-file">
                 Choose product's photo
                 <input type="file" id="fileInput" accept="image/*">
             </label> 
             <div class="preview">
                 <img id="previewImg" src="" alt="">
-            </div>-->
-            <div id="submitCon">
+            </div>
+            <div id="btnCon">
                 <input type="submit" id="submit">
+                <input type="submit" id="previewBtn" value="Save">
             </div>
         </form>
     </main>
