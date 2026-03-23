@@ -4,7 +4,7 @@ const app = express();
 const dns = require("dns");
 require("dotenv").config();
 const authRoutes = require("./routes/authRoutes");
-const bookmarkRoutes = require("./routes/bookmarkRoutes");
+const bookmarkRoutes = require("./routes/productsRoutes");
 
 app.use(express.json());
 
