@@ -6,64 +6,84 @@ const router = express.Router();
 
 // GET all
 router.get("/", auth, async (req, res) => {
-  const Products = await Product.find({ userId: req.userId });
-  res.json(Products);
+  try {
+    const Products = await Product.find();
+    res.status(200).json({
+      status: "success",
+      data: {
+        Products
+      }
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      message: err.message
+    });
+  }
 });
 
 // GET one
-router.get("/:id", auth, (req, res) => {
-  const Product = req.params.id ;
-   Product.findById(Product).then(Product => {
-    if (!Product) {
+router.get("/:id", auth, async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
+    if (!product) {
       return res.status(403).json({ message: "Not allowed" });
-    }else{
-       res.status(200).json({
-      status: "success",
-      data: {
-        Product
-      }
-    });
+    } else {
+      res.status(200).json({
+        status: "success",
+        data: {
+          product
+        }
+      });
     }
-  }).catch(err => res.status(500).json({
-    status: "error",
-    message: err.message
-  }));
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      message: err.message
+    });
+  }
 
 });
 
 // CREATE
 router.post("/", auth, async (req, res) => {
-  const Product = await Product.create({
-    ...req.body,
-    userId: req.userId,
-  });
-
-  res.json(Product);
+  try {
+    const product = await Product.create({
+      ...req.body
+    });
+    res.status(201).json(product);
+  } catch (err) {
+    res.status(400).json({
+      status: "error",
+      message: err.message
+    });
+  }
 });
 
 // UPDATE
 router.patch("/:id", auth, async (req, res) => {
-  const Product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id);
 
-  if (!Product || Product.userId.toString() !== req.userId) {
+  if (!product) {
     return res.status(403).json({ message: "Not allowed" });
   }
 
-  Object.assign(Product, req.body);
-  await Product.save();
+  Object.assign(product, req.body);
+  await product.save();
 
-  res.json(Product);
+  res.json(product);
 });
 
 // DELETE
 router.delete("/:id", auth, async (req, res) => {
-  const Product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id);
 
-  if (!Product || Product.userId.toString() !== req.userId) {
+  if (!product) {
     return res.status(403).json({ message: "Not allowed" });
   }
 
-  await Product.deleteOne();
+  await product.deleteOne();
 
   res.json({ message: "Deleted" });
 });
